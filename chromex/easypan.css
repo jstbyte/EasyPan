@@ -1,0 +1,30 @@
+#epan_ui_root {
+    position: fixed;
+    left: 10px;
+    bottom: 5px;
+    z-index: 99999999 !important;
+}
+
+.button_jst {
+    padding: 5px 5px;
+    margin: 0px 5px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    background-color: purple;
+    box-shadow: 2px 2px 5px purple;
+    width: 60px
+}
+
+.button_jst:hover {
+    box-shadow: 2px 2px 10px purple;
+}
+
+.button_jst:active {
+    opacity: 0.5;
+}
+
+#file_json {
+    display: none;
+}

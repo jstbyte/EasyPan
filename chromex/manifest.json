@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "EPANEX",
+    "version": "0.0.1",
+    "description": "EasyPan Chrome Extension!",
+    "icons": {
+        "48": "assets/icon.png"
+    },
+
+    "permissions": [
+        "activeTab",
+        "storage",
+        "declarativeContent",
+        "downloads", 
+        "notifications"
+    ],
+
+    "content_scripts": [
+        {
+          "matches": ["https://easypancard.com/PAN/NewApplicant"],
+          "css": ["easypan.css"],
+          "js": ["easypan.js"]
+        }
+    ]
+}
