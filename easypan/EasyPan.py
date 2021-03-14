@@ -10,8 +10,10 @@ BOX_WIDTH = 59
 class FormData():
     title = ''
     first_name = ''
+    middle_name = ''
     last_name = ''
     fa_firstname = ''
+    fa_middlename = ''
     fa_lastname = ''
     dob = ''
     house = ''
@@ -24,8 +26,10 @@ class FormData():
     def parse_easy_pan_form(self, jdata: dict):
         self.title = jdata.get('ApplicantTitle', '').replace('string:', '')
         self.first_name = jdata.get('firstname', '')
+        self.middle_name = jdata.get('middlename', '')
         self.last_name = jdata.get('lastname', '')
         self.fa_firstname = jdata.get('father_firstname', '')
+        self.fa_middlename = jdata.get('father_middlename', '')
         self.fa_lastname = jdata.get('father_lastname', '')
         self.dob = jdata.get('dob', '')
         self.house = jdata.get('c_houseno', '')
@@ -53,7 +57,8 @@ def write_form(data:FormData):
     canvas = ImageDraw.Draw(img)
     
     write_text(data.last_name, 758, 868, canvas) # last_name;
-    write_text(data.first_name, 758, 868 + BOX_WIDTH + 6, canvas) # first_name;
+    write_text(data.first_name, 758, 933, canvas) # first_name;
+    write_text(data.middle_name, 758, 995, canvas) # middle_name;
 
     write_text(data.first_name + ' ' + data.last_name, 148, 1130, canvas) # to_printed;
 
@@ -64,6 +69,7 @@ def write_form(data:FormData):
 
     write_text(data.fa_lastname, 760, 2150, canvas) # father_lastname;
     write_text(data.fa_firstname, 760, 2215, canvas) # father_firstname;
+    write_text(data.fa_middlename, 760, 2280, canvas) # father_middlename;
     img.paste(yes.copy(), (140, 2625), yes)
 
     if ( data.title.upper() == 'SHRI' ):
