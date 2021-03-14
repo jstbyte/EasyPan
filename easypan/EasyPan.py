@@ -12,6 +12,7 @@ class FormData():
     first_name = ''
     middle_name = ''
     last_name = ''
+    card_name = ''
     fa_firstname = ''
     fa_middlename = ''
     fa_lastname = ''
@@ -28,6 +29,7 @@ class FormData():
         self.first_name = jdata.get('firstname', '')
         self.middle_name = jdata.get('middlename', '')
         self.last_name = jdata.get('lastname', '')
+        self.card_name = jdata.get('cardname', '')
         self.fa_firstname = jdata.get('father_firstname', '')
         self.fa_middlename = jdata.get('father_middlename', '')
         self.fa_lastname = jdata.get('father_lastname', '')
@@ -60,7 +62,7 @@ def write_form(data:FormData):
     write_text(data.first_name, 758, 933, canvas) # first_name;
     write_text(data.middle_name, 758, 995, canvas) # middle_name;
 
-    write_text(data.first_name + ' ' + data.last_name, 148, 1130, canvas) # to_printed;
+    write_text(data.card_name, 148, 1130, canvas) # card_name;
 
     dob = data.dob.split('/')
     write_text(dob[0], 148, 1820, canvas) # DD;
