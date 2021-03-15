@@ -18,6 +18,7 @@ const EIDS = [
   'c_State',
   'c_PIN',
   'contactno',
+  'email',
 ];
 
 const readFile = (file) =>
