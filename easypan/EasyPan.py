@@ -3,7 +3,7 @@ from sys import argv
 import os
 import json
 
-COMPONENTS_DIR = os.path.dirname(argv[0]) + '\\components\\'
+COMPONENTS_DIR = os.path.dirname(argv[0]) + '\\components\\' # Use Only 'components\\' while in DevMode;
 BOX_WIDTH = 59
 
 PAN_CENTER_PLACE = 'AMBARI BAZAR'
@@ -53,13 +53,13 @@ class FormData():
 
 
 def write_text(text:str, x:int, y:int, drawable):
-    myFont = ImageFont.truetype(COMPONENTS_DIR + 'Menlo-Regular.ttf', 50)
+    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', 40)
     for char in text.upper():
         drawable.text((x, y), char, font=myFont, fill =(0, 0, 0))
         x = x + BOX_WIDTH
 
-def write_text_linier(text:str, x:int, y:int, drawable, font_size = 50):
-    myFont = ImageFont.truetype(COMPONENTS_DIR + 'Menlo-Regular.ttf', font_size)
+def write_text_linier(text:str, x:int, y:int, drawable, font_size = 40):
+    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', font_size)
     drawable.text((x, y), text, font=myFont, fill =(0, 0, 0))
 
 def write_form(data:FormData):
@@ -129,14 +129,14 @@ def write_form(data:FormData):
         write_text(data.aadhaar_name, 750, 1455, canvas) # Aadhaar Name;
 
     img.paste(yes.copy(), (1795, 1825), yes) # Tick No Income;
-    write_text_linier(data.card_name.capitalize(), 220, 3045, canvas, 30) # We/I;
+    write_text_linier(data.card_name.capitalize(), 220, 3035, canvas, 40) # We/I;
 
     if (sex == 'male'):
         write_text_linier('Himself', 1730, 3045, canvas, 30) # Himself;
     else:
-        write_text_linier('Herself', 1730, 3045, canvas, 30) # We/I;
+        write_text_linier('Herself', 1730, 3045, canvas, 30) # Herself;
 
-    write_text_linier(PAN_CENTER_PLACE, 340, 3170, canvas, 30) # We/I;
+    write_text_linier(PAN_CENTER_PLACE, 340, 3170, canvas, 30) # PAN Center Place;
 
     img.save(f'{path}{data.first_name}_{data.last_name}#.jpg')
 
