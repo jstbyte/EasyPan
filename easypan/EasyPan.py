@@ -3,7 +3,7 @@ from sys import argv
 import os
 import json
 
-COMPONENTS_DIR = os.path.dirname(argv[0]) + '\\components\\' # Use Only 'components\\' while in DevMode;
+COMPONENTS_DIR = 'components\\' # os.path.dirname(argv[0]) + '\\components\\' # Use Only 'components\\' while in DevMode;
 BOX_WIDTH = 59
 
 PAN_CENTER_PLACE = 'AMBARI BAZAR'
@@ -52,8 +52,8 @@ class FormData():
         self.aadhaar_name = jdata.get('Aadhaar_name', '')
 
 
-def write_text(text:str, x:int, y:int, drawable):
-    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', 40)
+def write_text(text:str, x:int, y:int, drawable, font_size = 40):
+    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', font_size)
     for char in text.upper():
         drawable.text((x, y), char, font=myFont, fill =(0, 0, 0))
         x = x + BOX_WIDTH
@@ -76,9 +76,9 @@ def write_form(data:FormData):
     write_text(data.card_name, 148, 1130, canvas) # card_name;
 
     dob = data.dob.split('/')
-    write_text(dob[0], 148, 1820, canvas) # DD;
-    write_text(dob[1], 325, 1820, canvas) # MM;
-    write_text(dob[2], 500, 1820, canvas) # YYYY;
+    write_text(dob[0], 148, 1815, canvas, 50) # DD;
+    write_text(dob[1], 325, 1815, canvas, 50) # MM;
+    write_text(dob[2], 500, 1815, canvas, 50) # YYYY;
 
     write_text(data.fa_lastname, 760, 2150, canvas) # father_lastname;
     write_text(data.fa_firstname, 760, 2215, canvas) # father_firstname;
@@ -105,7 +105,7 @@ def write_form(data:FormData):
     write_text(data.post, 760, 3008, canvas) # Post Office;
     write_text(data.dist, 760, 3135, canvas) # District;
     write_text_linier('ASSAM', 450, 3265, canvas) # State;
-    write_text(data.pin, 970, 3265, canvas) # State;
+    write_text(data.pin, 970, 3260, canvas, 50) # State;
     write_text_linier('INDIA', 1670, 3265, canvas) # State;
 
     path = os.path.dirname(argv[1])
@@ -119,8 +119,8 @@ def write_form(data:FormData):
     canvas = ImageDraw.Draw(img)
 
     img.paste(yes.copy(), (980, 530), yes) # Tick Residence;
-    write_text('+91', 320, 692, canvas) # Country Code;
-    write_text(data.phone, 1030, 692, canvas) # Phone No;
+    write_text('+91', 320, 685, canvas, 50) # Country Code;
+    write_text(data.phone, 1030, 685, canvas, 50) # Phone No;
     write_text_linier(data.email, 320, 758, canvas, 40) # Email;
     img.paste(yes.copy(), (140, 955), yes) # Tick Residence;
 
