@@ -3,7 +3,7 @@ from sys import argv
 import os
 import json
 
-COMPONENTS_DIR = 'components\\' # os.path.dirname(argv[0]) + '\\components\\' # Use Only 'components\\' while in DevMode;
+COMPONENTS_DIR =  os.path.dirname(argv[0]) + '\\components\\' # Use Only 'components\\' while in DevMode;
 BOX_WIDTH = 59
 
 PAN_CENTER_PLACE = 'AMBARI BAZAR'
@@ -53,13 +53,13 @@ class FormData():
 
 
 def write_text(text:str, x:int, y:int, drawable, font_size = 40):
-    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', font_size)
+    myFont = ImageFont.truetype(COMPONENTS_DIR + 'Jsf-Regular.ttf', font_size)
     for char in text.upper():
         drawable.text((x, y), char, font=myFont, fill =(0, 0, 0))
         x = x + BOX_WIDTH
 
 def write_text_linier(text:str, x:int, y:int, drawable, font_size = 40):
-    myFont = ImageFont.truetype(COMPONENTS_DIR + 'caveat-regular.ttf', font_size)
+    myFont = ImageFont.truetype(COMPONENTS_DIR + 'Jsf-Regular.ttf', font_size)
     drawable.text((x, y), text, font=myFont, fill =(0, 0, 0))
 
 def write_form(data:FormData):
